@@ -1,0 +1,61 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.exchangeratesapi.io/latest?base=USD
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.exchangeratesapi.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 16 Sep 2019 08:30:28 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d0badf29903004efb460b19b2df47cda11568622628; expires=Tue, 15-Sep-20
+        08:30:28 GMT; path=/; domain=.exchangeratesapi.io; HttpOnly
+      Vary:
+      - Accept-Encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET
+      Cf-Cache-Status:
+      - HIT
+      Age:
+      - '494'
+      Expires:
+      - Mon, 16 Sep 2019 09:00:28 GMT
+      Cache-Control:
+      - public, max-age=1800
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 51717a81ddc18af0-KBP
+    body:
+      encoding: ASCII-8BIT
+      string: '{"rates":{"CAD":1.3214671954,"HKD":7.8255227109,"ISK":124.4592645999,"PHP":51.9502523432,"DKK":6.7301730353,"HUF":298.7833453497,"CZK":23.2903749099,"GBP":0.8029289834,"RON":4.2674837779,"SEK":9.5967015141,"IDR":13964.9963950973,"INR":70.9638608508,"BRL":4.0522710887,"RUB":64.1891672675,"HRK":6.6641131939,"JPY":107.9938716655,"THB":30.4397981255,"CHF":0.9859408796,"EUR":0.9012256669,"MYR":4.1644736842,"BGN":1.7626171593,"TRY":5.6679884643,"CNY":7.0826423937,"NOK":8.9413302091,"NZD":1.5639870224,"ZAR":14.5082011536,"USD":1.0,"MXN":19.3826604182,"SGD":1.3722062004,"AUD":1.4533165105,"ILS":3.5267664023,"KRW":1177.0007209805,"PLN":3.8976207642},"base":"USD","date":"2019-09-13"}'
+    http_version: 
+  recorded_at: Mon, 16 Sep 2019 08:30:28 GMT
+recorded_with: VCR 5.0.0
