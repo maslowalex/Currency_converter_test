@@ -7,11 +7,9 @@ new Vue({
     amount: ""
   },
   mounted() {
-    axios.get("http://localhost:9292/currencies.json")
+    axios.get("http://localhost:9292/currencies/USD.json")
     .then(response => 
-      { 
-        this.currencies = response.data.currencies;
-      })
+      { this.currencies = response.data.currencies });
   },
   methods: {
     calculate() {
@@ -25,6 +23,13 @@ new Vue({
       } else {
         this.$refs.result.value = result.toFixed(3)
       }
+    },
+    changeSelectedFrom() {
+      this.selectedFrom = this.$refs.from.selectedOptions[0].label
+      let newFrom = this.selectedFrom
+
+      axios.get("http://localhost:9292/currencies/" + newFrom + ".json").then(response =>
+        { this.currencies = response.data.currencies });
     }
   }
 });

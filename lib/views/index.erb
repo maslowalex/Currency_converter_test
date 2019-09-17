@@ -8,8 +8,11 @@
         <input class="form-control" v-model="amount" placeholder="Enter sum" @input="calculate()">
       </div>
       <div class="col">
-        <select class="form-control" ref="from">
-          <option>USD</option>
+        <select class="form-control" ref="from" @change="changeSelectedFrom(); calculate()">
+          <option v-for="rate, currency in currencies" :value="currency.value" :key="currency.key"
+                  :selected="currency=='USD'">
+            {{ currency }}
+          </option>
         </select>
       </div>
     </div>

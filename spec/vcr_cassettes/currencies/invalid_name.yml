@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.exchangeratesapi.io/latest?base=BLAH
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.exchangeratesapi.io
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 17 Sep 2019 06:24:01 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '41'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d96b3c74a1c052d0915beccdb515a25a41568701441; expires=Wed, 16-Sep-20
+        06:24:01 GMT; path=/; domain=.exchangeratesapi.io; HttpOnly
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET
+      Cf-Cache-Status:
+      - MISS
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Vary:
+      - Accept-Encoding
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5178feaaaeca8b08-KBP
+    body:
+      encoding: UTF-8
+      string: '{"error":"Base ''BLAH'' is not supported."}'
+    http_version: 
+  recorded_at: Tue, 17 Sep 2019 06:24:01 GMT
+recorded_with: VCR 5.0.0

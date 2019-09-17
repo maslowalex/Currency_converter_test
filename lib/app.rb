@@ -14,12 +14,12 @@ class App < Sinatra::Base
   post '/currencies.json' do
     content_type :json
 
-    CurrenciesApi.new.call.to_json
+    CurrenciesApi.new(name: params['name']).call.to_json
   end
 
-  get '/currencies.json' do
+  get '/currencies/:name.json' do
     content_type :json
 
-    { 'currencies' => Storage.new.get_all_currencies }.to_json
+    Storage.new(params['name']).get_all_currencies.to_json
   end
 end

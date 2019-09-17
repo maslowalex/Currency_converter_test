@@ -7,17 +7,23 @@ require_relative 'storage'
 class CurrenciesApi
   BASE_URL = 'https://api.exchangeratesapi.io'
   ENDPOINT = 'latest'
-  QUERY = %w[base USD].freeze
+  QUERY = 'base'
   CURRENCIES_PATH = 'rates'
+  DEFAULT_CURRENCY = 'USD'
+
+  def initialize(name: DEFAULT_CURRENCY)
+    @name = name.upcase
+  end
 
   def call
     @response = make_request!
 
     if @response.code.to_i == 200
       save_rates_to_db
-      json_response
+
+      { 'currencies' => json_response.dig('rates') }
     else
-      error
+      json_response
     end
   end
 
@@ -36,14 +42,10 @@ class CurrenciesApi
   end
 
   def compose_url
-    BASE_URL + '/' + ENDPOINT + '?' + QUERY.join('=')
-  end
-
-  def error
-    { 'error' => json_response }
+    BASE_URL + '/' + ENDPOINT + '?' + QUERY + '=' + @name
   end
 
   def save_rates_to_db
-    Storage.new.save_currencies(json_response.fetch(CURRENCIES_PATH))
+    Storage.new(@name).save_currencies(json_response.fetch(CURRENCIES_PATH))
   end
 end
