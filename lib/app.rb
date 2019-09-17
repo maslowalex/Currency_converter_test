@@ -8,10 +8,12 @@ class App < Sinatra::Base
   set :public_folder, 'public'
 
   get '/' do
-    erb :index
+    erb :index, locals: {
+      last_update: Storage.new(CurrenciesApi::DEFAULT_CURRENCY).updated_at
+    }
   end
 
-  post '/currencies.json' do
+  put '/currencies/:name.json' do
     content_type :json
 
     CurrenciesApi.new(name: params['name']).call.to_json

@@ -40,6 +40,10 @@ class Storage
     Time.now.strftime('%Y-%m-%d') == @redis.get("#{@name}_rates_updated_at")
   end
 
+  def updated_at
+    @redis.get("#{@name}_rates_updated_at")
+  end
+
   private
 
   def save_timestamp

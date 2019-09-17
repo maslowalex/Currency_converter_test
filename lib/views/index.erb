@@ -2,6 +2,9 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <div class="container" id="app">
+  <p class="ml-3">
+    USD Last updated at: <%= last_update %>
+  </p> 
   <form>
     <div class="form-row m-2">
       <div class="col">
@@ -17,7 +20,7 @@
       </div>
     </div>
     <div class="form-row m-2">
-      <div class="col"> 
+      <div class="col">
         <input class="form-control" id="currencyTo" placeholder="Result" ref="result" @change="calculate()">
       </div>
       <div class="col">
@@ -27,6 +30,9 @@
           </option>
         </select>
       </div>
+    </div>
+    <div class="form-row">
+      <button class="btn btn-warning ml-3" @click="refreshRate($event)">Update rates for {{ selectedFrom }} as base</button>
     </div>
   </form>
 </div>

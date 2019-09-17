@@ -36,6 +36,15 @@ new Vue({
           this.currencies = response.data.currencies;
           console.log('Using ' + newFrom + ' as base currency')
         });
+    },
+    refreshRate(e) {
+      e.preventDefault();
+      let currencyName = this.selectedFrom
+      axios.put("https://currency-converter-testtask.herokuapp.com/currencies/" + currencyName + ".json").then(
+        response => {
+          this.currencies = response.data.currencies;
+          console.log('Updating rates for ' + currencyName + '...')
+        });
     }
   }
 });

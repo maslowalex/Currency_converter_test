@@ -11,8 +11,8 @@ class CurrenciesApi
   CURRENCIES_PATH = 'rates'
   DEFAULT_CURRENCY = 'USD'
 
-  def initialize(name: DEFAULT_CURRENCY)
-    @name = name.upcase
+  def initialize(name:)
+    @name = name&.upcase || DEFAULT_CURRENCY
   end
 
   def call

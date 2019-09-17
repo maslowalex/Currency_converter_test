@@ -17,8 +17,8 @@ describe App do
     Storage.new('PLN').remove_currencies
   end
 
-  context 'POST currencies' do
-    let(:response) { post '/currencies.json', { 'name' => 'PLN' } }
+  context 'PUT currencies/NAME' do
+    let(:response) { put '/currencies/PLN.json' }
 
     it 'updates currencies rates and return it as json' do
       VCR.use_cassette('currencies/refresh') do
@@ -33,14 +33,14 @@ describe App do
     end
   end
 
-  context 'GET currencies' do
+  context 'GET currencies/NAME' do
     context 'with valid params' do
       let(:response) { get '/currencies/PLN.json' }
 
       it 'returns currencies json' do
-        VCR.use_cassette('currencies/get_pln') do 
+        VCR.use_cassette('currencies/get_pln') do
           json = JSON.parse(response.body)
-    
+
           expect(response.status).to eq 200
           expect(json.keys).to contain_exactly('currencies')
           expect(json.fetch('currencies').size).to eq 33
@@ -54,7 +54,7 @@ describe App do
       it 'returns an error' do
         VCR.use_cassette('currencies/invalid_name') do
           json = JSON.parse(response.body)
-          
+
           expect(response.status).to eq 200
           expect(json.keys).to contain_exactly('error')
           expect(json.fetch('error')).to eq "Base 'BLAH' is not supported."
@@ -63,4 +63,3 @@ describe App do
     end
   end
 end
-
