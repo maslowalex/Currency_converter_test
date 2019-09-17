@@ -7,7 +7,7 @@ new Vue({
     amount: ""
   },
   mounted() {
-    axios.get("http://localhost:9292/currencies/USD.json")
+    axios.get("https://currency-converter-testtask.herokuapp.com/currencies/USD.json")
     .then(response => 
       { this.currencies = response.data.currencies });
   },
@@ -28,7 +28,7 @@ new Vue({
       this.selectedFrom = this.$refs.from.selectedOptions[0].label
       let newFrom = this.selectedFrom
 
-      axios.get("http://localhost:9292/currencies/" + newFrom + ".json").then(response =>
+      axios.get("https://currency-converter-testtask.herokuapp.com/currencies/" + newFrom + ".json").then(response =>
         { this.currencies = response.data.currencies });
     }
   }
