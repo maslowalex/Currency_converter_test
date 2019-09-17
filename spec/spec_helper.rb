@@ -18,7 +18,8 @@
 require './lib/app'
 require 'vcr_helper'
 require 'rack/test'
-require 'byebug'
+
+$redis = Redis.new
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
