@@ -9,7 +9,10 @@ new Vue({
   mounted() {
     axios.get("https://currency-converter-testtask.herokuapp.com/currencies/USD.json")
     .then(response => 
-      { this.currencies = response.data.currencies });
+      { 
+        this.currencies = response.data.currencies
+        console.log('Using USD as base currency...')
+      });
   },
   methods: {
     calculate() {
@@ -29,7 +32,10 @@ new Vue({
       let newFrom = this.selectedFrom
 
       axios.get("https://currency-converter-testtask.herokuapp.com/currencies/" + newFrom + ".json").then(response =>
-        { this.currencies = response.data.currencies });
+        { 
+          this.currencies = response.data.currencies;
+          console.log('Using ' + newFrom + ' as base currency')
+        });
     }
   }
 });
