@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 require 'sinatra/base'
-require 'json'
 require_relative 'storage'
 require_relative 'currencies_api'
 
 class App < Sinatra::Base
+  set :public_folder, 'public'
+
   get '/' do
+    erb :index
   end
 
   post '/currencies.json' do
